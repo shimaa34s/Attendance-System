@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 1,
+    "Saturday": true,
+    "Sunday": false,
+    "Monday": true,
+    "Tuesday": false,
+    "Wednesday": true,
+    "Thursday": false,
+    "Friday": true,
+    "student": null
+  }
+
+]

@@ -1,0 +1,48 @@
+﻿@using Attendance_System.ViewModel
+@model Degree
+@{
+
+}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-primary border-bottom pb-2">@Model?.Department?.DeptName</h3>
+            <h3 class="text-secondary border-bottom pb-2">@Model?.Course?.CrsName</h3>
+
+            @if (ViewBag.ErrorMessages != null)
+            {
+                var errorMessages = ViewBag.ErrorMessages as List<string>;
+                if (errorMessages != null && errorMessages.Count > 0)
+                {
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach (var error in errorMessages)
+                            {
+                                <li>@error</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            }
+
+            <form method="post" class="mt-4">
+                @foreach (var item in Model?.Department?.student ?? Enumerable.Empty<Student>())
+                {
+                    var res = Model.StudentCourse.FirstOrDefault(sc => sc.stId == item.Id && sc.crsid == Model.Course.CrsId);
+                    <div class="form-group">
+                        <label class="font-weight-bold">@item.Name</label>
+                        @if (res != null && res.intake.HasValue)
+                        {
+                            <input type="date" name="deg.@item.Id" value="@res.intake.Value.ToString("yyyy-MM-dd")" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="date" name="deg.@item.Id" value="" class="form-control" />
+                        }
+                    </div>
+                }
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

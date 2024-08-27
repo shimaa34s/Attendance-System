@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Attendance_System.Models.Department>
+
+@{
+   // Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+<table class="table table-hover table-bordered" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacity)
+            </th>
+            <th>Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeptId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeptName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+            <td>
+                        @Html.ActionLink("edit", "edit", new { id = item.DeptId }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.DeptId }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("Deletee", "Deletee", new { id = item.DeptId }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("ShowCourse", "ShowCourse", "Department", new { id = item.DeptId }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("MangeCourses", "MangeCourses", "Department", new { id = item.DeptId }, new { @class = "btn btn-info" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

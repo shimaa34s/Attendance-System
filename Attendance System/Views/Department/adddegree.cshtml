@@ -1,0 +1,36 @@
+﻿@using Attendance_System.ViewModel
+@model Degree
+
+@{
+    // ViewBag.Title = "Degree";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-primary">@Model.Department.DeptName</h3>
+            <h3 class="text-secondary">@Model.Course.CrsName</h3>
+
+            <form method="post" class="mt-4">
+                @foreach (var item in Model.Department.student)
+                {
+                    <div class="form-group">
+                        <label class="font-weight-bold">@item.Name</label>
+                        @{
+                            var res = Model.StudentCourse.FirstOrDefault(sc => sc.stId == item.Id && sc.crsid == Model.Course.CrsId);
+                        }
+                        @if (res != null)
+                        {
+                            <input type="text" name="deg.@item.Id" value="@res.degree" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="text" name="deg.@item.Id" value="0" class="form-control" />
+                        }
+                    </div>
+                }
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

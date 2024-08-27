@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Attendance_System.Models.Course>
+
+@{
+    //Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CrsId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CrsName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CrsId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CrsName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                        @Html.ActionLink("edit", "edit", new { id = item.CrsId }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("details", "details", new { id = item.CrsId }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("deletee", "deletee", new { id = item.CrsId }, new { @class = "btn btn-info" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

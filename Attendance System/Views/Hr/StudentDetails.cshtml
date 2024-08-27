@@ -1,0 +1,72 @@
+﻿@model Attendance_System.Models.Student
+
+@{
+    //Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StudentDetails</title>
+</head>
+<body>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.img)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.img)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dnum)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Department.DeptName)
+        </dd>
+   
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Verified)
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Verified
+@*             @Html.DisplayFor(model => model.Verified)
+ *@        </dd>
+    </dl>
+</div>
+<div>
+@*     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+ *@    <a asp-action="Index" asp-route-id="@Model.Hnum">Back to List</a>
+</div>
+</body>
+</html>

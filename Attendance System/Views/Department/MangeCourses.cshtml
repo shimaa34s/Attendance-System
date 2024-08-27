@@ -1,0 +1,29 @@
+﻿@model Department
+@{
+    // Layout = null;
+    ViewBag.Title = "mange Course";
+
+}
+
+
+<h3 class="alert alert-danger">Course in @Model.DeptName</h3>
+<form method="post">
+    <div>
+        <select name="coursetoremove" multiple>
+            @foreach (Course item in ViewBag.coursein)
+            {
+                <option value="@item.CrsId">@item.CrsName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <select name="coursetoadd" multiple>
+            @foreach (Course item in ViewBag.courseout)
+            {
+                <option value="@item.CrsId">@item.CrsName</option>
+            }
+        </select>
+    </div>
+    <input type="submit" value="change" />
+</form>
+

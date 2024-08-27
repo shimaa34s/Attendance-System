@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Attendance_System.Models.Student>
+
+@{
+   // Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShowAttendance</title>
+</head>
+<body>
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+           
+            <th>
+                    @Html.DisplayNameFor(model => model.StudentAttendece.Saturday)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentAttendece.Sunday)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentAttendece.Monday)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentAttendece.Tuesday)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentAttendece.Wednesday)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentAttendece.Thursday)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentAttendece.Friday)
+                </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+           
+            <td>
+                        @Html.DisplayFor(modelItem => item.StudentAttendece.Saturday)
+            </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentAttendece.Sunday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentAttendece.Monday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentAttendece.Tuesday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentAttendece.Wednesday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentAttendece.Thursday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentAttendece.Friday)
+                    </td>
+                   
+        </tr>
+}
+    </tbody>
+</table>
+    <a asp-action="StList" class="btn btn-info">Back to List</a>
+
+</body>
+</html>

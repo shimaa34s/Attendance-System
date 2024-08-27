@@ -1,0 +1,82 @@
+﻿@model Attendance_System.Models.Student
+
+@{
+   // Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateST</title>
+</head>
+<body>
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateST" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+      
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CPassword" class="control-label"></label>
+                <input asp-for="CPassword" class="form-control" />
+                <span asp-validation-for="CPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="img" class="form-label"></label>
+                    <input  type="file" name="img" class="form-control" />
+                <span asp-validation-for="img" class="text-danger"></span>
+            </div>
+                <div class="form-group">
+                    <label asp-for="Dnum" class="form-label">Department</label>
+                    <select asp-for="Dnum" asp-items="@ViewBag.deptl" class="form-select"></select>
+                    <span asp-validation-for="Dnum" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Hnum" class="control-label">Hr</label>
+                    <select asp-for="Hnum" asp-items="@ViewBag.hrl" class="form-control"></select>
+                    <span asp-validation-for="Hnum" class="text-danger"></span>
+                </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Verified" /> @Html.DisplayNameFor(model => model.Verified)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+  @*   <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script> *@
+</body>
+</html>
