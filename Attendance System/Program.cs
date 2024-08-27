@@ -30,6 +30,7 @@ namespace Attendance_System
 
             // إضافة خدمات أخرى (Scoped)
             builder.Services.AddScoped<IStudentService, StudentService>();
+            builder.Services.AddScoped<IDepartmentServiseCourse, DepartmentService>();
             builder.Services.AddScoped<IStudentAttendeceService, StudentAttendeceService>();
             builder.Services.AddScoped<ICourseService, CourseService>();
             builder.Services.AddScoped<IDepartmentService, DepartmentService>();
@@ -68,7 +69,7 @@ namespace Attendance_System
             // تكوين مسار التحكم الافتراضي
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=admin}/{action=index}/{id?}");
+                pattern: "{controller=account}/{action=login}/{id?}");
 
             app.Run();
         }

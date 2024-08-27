@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+
+@{
+    // الحصول على معرف الـ HR من الـ claims
+    //string hrId = User.FindFirstValue("HRId"); // تأكد من أن "HRId" هو اسم الـ claim الصحيح
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -41,27 +48,31 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="account" asp-action="LogOut">Log Out</a>
                             </li>
-                         //   if (User.IsInRole("hr"))
-                         //   {
+                            @if (User.IsInRole("hr"))
+                            {
+                                var hrId = User.FindFirst("HRId")?.Value;
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Department" asp-action="index">Department</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Hr" asp-action="Index" asp-route-id="@hrId">Student List</a>
                                 </li>
-                           // }
-                        //    if (User.IsInRole("student"))
-                         //   {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="StList">Student</a>
-                                </li>
-                         //   }
-                           // if (User.IsInRole("admin"))
-                          //  {
+                            }
+                            @if (User.IsInRole("student"))
+                            {
+                                <!-- يمكنك إضافة عناصر قائمة إضافية هنا -->
+                            }
+                            @if (User.IsInRole("admin"))
+                            {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Course" asp-action="index">Course</a>
                                 </li>
-                           // }
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="StList">Student</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Department" asp-action="Index">Department</a>
+                                </li>
+                            }
                         }
                     </ul>
-
                 </div>
             </div>
         </nav>
